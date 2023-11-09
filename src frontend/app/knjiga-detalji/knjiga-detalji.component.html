@@ -1,0 +1,44 @@
+<h2>Detalji knjige</h2>
+
+<div class="center" *ngIf="knjiga && korisnik.tip == 'C' ">
+    <img class="size" [src]="knjiga.imagePath" alt="SLIKA">
+    <p>Naziv knjige: {{knjiga.naziv}}</p>
+    <p>Autori knjige: {{knjiga.autori}}</p>
+    <p>Zanrovi knjige: {{knjiga.zanrovi}}</p>
+    <p>Izdavac knjige: {{knjiga.izdavac}}</p>
+    <p>Jezik: {{knjiga.jezik}}</p>
+    <p>Na stanju: {{knjiga.naStanju}}</p>
+    <p>
+        <button (click)="zaduzi()">Zaduzi knjigu</button>
+    </p>
+    <p style="font-size: 20px; font-weight: bold; color: red">{{poruka}}</p>
+</div>
+
+<form [formGroup]= "form"  *ngIf="knjiga && korisnik.tip == 'M'">
+    <div class="center" >
+        <img class="size" [src]="knjiga.imagePath" alt="SLIKA"><br/>
+       
+        Naziv knjige: <input type="text" formControlName="naziv"> <br/>
+        Autori knjige: <input type="text" formControlName="autori"> <br/>
+        Zanrovi knjige:  <select formControlName="zanrovi" multiple>
+            <option value="horor">horor</option>
+            <option value="drama">drama</option>
+            <option value="ljubavni roman">ljubavni roman</option>
+            <option value="novela">novela</option>
+            <option value="biografija">biografija</option>
+        </select><br/>
+        Izdavac knjige: <input type="text" formControlName="izdavac"> <br/>
+        Jezik: <input type="text" formControlName="jezik"><br/>
+        Na stanju: <input type="number" formControlName="naStanju"><br/>
+        
+        <button type="button" (click)="filepicker.click()">Azuriraj sliku</button>
+        <input #filepicker type="file"  (change) = "PickedImage($event)"><br/>
+
+        
+    <div class="image-preview" *ngIf = "Pickedimage !== '' && Pickedimage && form.get('image').valid">
+        <img [src]="Pickedimage" width="150">
+    </div>
+
+        <button (click)="azuriraj()">Azuriraj</button>
+    </div>
+</form>

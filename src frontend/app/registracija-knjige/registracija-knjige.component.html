@@ -1,0 +1,65 @@
+<h2 class="center">Registracija korisnika</h2>
+
+<form [formGroup]= "form" >
+    <table class="center">
+        <tr>
+            <td>Naziv knjige:</td>
+            <td>
+                <input type="text" formControlName="naziv">
+            </td>
+        </tr>
+        <tr>
+            <td>Naziv(i) autroa(razdovejni zarezom):</td>
+            <td>
+                <input type="text" formControlName="autori">
+            </td>
+        </tr>
+        <tr>
+            <td>Izaberite zanr:</td>
+            <td>
+                <select formControlName="zanrovi" multiple>
+                    <option value="horor">horor</option>
+                    <option value="drama">drama</option>
+                    <option value="ljubavni roman">ljubavni roman</option>
+                    <option value="novela">novela</option>
+                    <option value="biografija">biografija</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Izdavac:</td>
+            <td>
+                <input type="text" formControlName="izdavac">
+            </td>
+        </tr>
+        <tr>
+            <td>Godina izdavanja:</td>
+            <td>
+                <input type="date" formControlName="godina">
+            </td>
+        </tr>
+        <tr>
+            <td>Jezik:</td>
+            <td>
+                <input type="text" formControlName="jezik">
+            </td>
+        </tr>
+        <tr>
+            <td>Slika:</td>
+            <td>
+                <button type="button" (click)="filepicker.click()">Izaberi sliku</button>
+                <input #filepicker type="file"  (change) = "PickedImage($event)">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button (click)="registracijaKnjige()">Registracija knjige</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div class="image-preview" *ngIf = "Pickedimage !== '' && Pickedimage && form.get('image').valid">
+    <img [src]="Pickedimage" width="150">
+</div>
+<span style="color: red;">{{poruka}}</span>

@@ -1,0 +1,76 @@
+<h2 class="center">Registracija korisnika</h2>
+
+<form [formGroup]= "form" > 
+    
+    <table class="center">
+    
+        <tr>
+            <td>Korisnicko ime:</td>
+            <td>
+                <input matInput type="text" formControlName="korisnickoIme" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>Lozinka:</td>
+            <td>
+                <input type="password" formControlName="lozinka" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>Potvrda lozinke:</td>
+            <td>
+                <input type="password" formControlName="lozinka2" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>Ime i prezime:</td>
+            <td>
+                <input type="text" formControlName="imeIPrezime" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>Adresa (ulica i broj, grad)</td>
+            <td> 
+                <input type="text" formControlName="adresa" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>Kontakt telefon:</td>
+            <td>
+                <input type="number" formControlName="kontaktTelefon" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>I-mejl adresa:</td>
+            <td>
+                <input type="text" formControlName="imejl" >
+            </td>
+        </tr>
+
+        <tr>
+            <td>Slika:</td>
+            <td>
+                <button type="button" (click)="filepicker.click()">Izaberi sliku</button>
+                <input #filepicker type="file"  (change) = "PickedImage($event)">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button (click)="registracija()">Registracija</button>
+            </td>
+        </tr>
+    
+    </table>
+</form>
+
+<div class="image-preview" *ngIf = "Pickedimage !== '' && Pickedimage && form.get('image').valid">
+    <img [src]="Pickedimage" width="150">
+</div>
+<span style="color: red;">{{poruka}}</span>

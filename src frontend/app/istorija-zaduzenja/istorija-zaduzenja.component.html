@@ -1,0 +1,20 @@
+<h2>Istorija zaduzenja</h2>
+
+<table *ngIf="korisnik.istorijaZaduzenja.length != 0">
+    <tr>
+        <th ><button (click)="spn()">Naziv knjige</button></th>
+        <th><button (click)="spa()">Autori</button></th>
+        <th><button (click)="spdz()">Datum zaduzivanja</button></th>
+        <th><button (click)="spdv()">Datum vracanja</button></th>
+        <th>Detalji o knjizi</th>
+    </tr>
+    <tr *ngFor="let n of korisnik.istorijaZaduzenja">
+        <td>{{n.naziv}}</td>
+        <td>{{n.autori}}</td>
+        <td>{{n.datumZaduzivanja}}</td>
+        <td *ngIf="n.datumVracanja">{{n.datumVracanja}}</td>
+        <td *ngIf="!n.datumVracanja">Nije vracena</td>
+        <td><button (click)="prebaciNaKnjigu(n)">Knjiga</button></td>
+    </tr>
+
+</table>

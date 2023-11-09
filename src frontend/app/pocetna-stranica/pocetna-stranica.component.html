@@ -1,0 +1,37 @@
+<h2 style="text-align: center;">Pocetna stranica</h2>
+<h4 style="text-align: center;">Top 3 najcitanije knjige</h4>
+
+<ngb-carousel *ngIf="!prijavljen">
+    <ng-template ngbSlide *ngIf="knjige && knjige.length > 0">
+      <div class="picsum-img-wrapper" >
+        <img class="center" [src]="knjige[0].imagePath" alt="Random first slide" height="500" width="300">
+      </div>
+      <div class="carousel-caption" *ngIf="knjige && knjige.length > 0">
+        <h3 style="color: black;">1.</h3>
+        <p style="color: black; font-size: 30px;">{{knjige[0].naziv}} - {{knjige[0].autori}}</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="knjige && knjige.length > 1">
+      <div class="picsum-img-wrapper" >
+        <img class="center" [src]="knjige[1].imagePath" alt="Random second slide" height="500" width="300">
+      </div>
+      <div class="carousel-caption" *ngIf="knjige && knjige.length > 1">
+        <h3 style="color: black;">2.</h3>
+        <p style="color: black; font-size: 30px;">{{knjige[1].naziv}} - {{knjige[1].autori}}</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide *ngIf="knjige && knjige.length > 2">
+      <div class="picsum-img-wrapper" >
+        <img class="center" [src]="knjige[2].imagePath" alt="Random third slide" height="500" width="300">
+      </div>
+      <div class="carousel-caption" *ngIf="knjige && knjige.length > 2">
+        <h3 style="color: black;">3.</h3>
+        <p style="color: black; font-size: 30px;">{{knjige[2].naziv}} - {{knjige[2].autori}}</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <div *ngIf="prijavljen && knjigaDana">
+    <p style="color: black; font-size: 30px; font-weight: bold; text-align: center;">Knjiga dana:</p>
+    <img class="ms" [src]="knjigaDana.imagePath">
+  </div>

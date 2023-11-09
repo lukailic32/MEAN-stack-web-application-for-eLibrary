@@ -1,0 +1,63 @@
+<h3>Profil</h3>
+<div>
+    Korisnicko ime:
+    <input type="text"  [(ngModel)]="korisnickoIme" >
+</div>
+<div>
+    Lozinka:
+    <input type="text" [(ngModel)]="lozinka" >
+</div>
+<div>
+    Ime i prezime:
+    <input type="text" [(ngModel)]="imeIPrezime">
+</div>
+<div>
+    Adresa:
+    <input type="text" [(ngModel)]="adresa">
+</div>
+<div>
+    Kontakt telefon:
+    <input type="number" [(ngModel)]="kontaktTelefon">
+</div>
+<div>
+    Imejl:
+    <input type="text" [(ngModel)]="imejl">
+</div>
+<div>
+    Tip:
+    <output>{{tip}}</output>
+</div>
+<div>
+    Slika:
+    <img [src]="imagePath" height="100px" >
+</div>
+<button (click)="azuriraj()">Azuriraj</button>
+<p style="font-size: 30px;">Promena lozinke:</p>
+<table>
+    <tr>
+        <td>Stara lozinka:</td>
+        <td>
+            <input type="password" name="staraLozinka" [(ngModel)]="staraLozinka">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Nova lozinka:</td>
+        <td>
+            <input type="password" name="novaLozinka" [(ngModel)]="novaLozinka">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Potvrda nove lozinke:</td>
+        <td>
+            <input type="password" name="novaLozinkaPotvrda" [(ngModel)]="novaLozinkaPotvrda">
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <button (click)="promeni()">Promeni lozinku</button>
+        </td>
+    </tr>
+</table>

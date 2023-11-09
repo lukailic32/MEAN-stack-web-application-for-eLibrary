@@ -1,0 +1,149 @@
+<h2>Pregled svih korisnika</h2>
+
+<table *ngIf="sviKorisnici && sviKorisnici.length > 0">
+    <tr>
+        <th>Ime i prezime</th>
+        <th>Korisnicko ime</th>
+        <th>Lozinka</th>
+        <th>Adresa</th>
+        <th>Kontakt telefon</th>
+        <th>Imejl</th>
+        <th>Slika</th>
+        <th>Azuriraj</th>
+        <th>Izbrisi</th>
+    </tr>
+    <tr *ngFor="let n of sviKorisnici">
+        <td>{{n.imeIPrezime}}</td>
+        <td>{{n.korisnickoIme}}</td>
+        <td>{{n.lozinka}}</td>
+        <td>{{n.adresa}}</td>
+        <td>{{n.kontaktTelefon}}</td>
+        <td>{{n.imejl}}</td>
+        <td>
+            <img [src]="n.imagePath" height="70">
+        </td>
+        <td>
+            <button (click)="azurirajKor(n)">Azuriraj</button>
+        </td>
+        <td>
+            <button (click)="izbrisiKor(n)">Izbrisi</button>
+        </td>
+    </tr>
+</table>
+
+<table *ngIf="sveKnjige && sveKnjige.length > 0">
+    <tr>
+        <th>Naziv knjige</th>
+        <th>Autori</th>
+        <th>Zanrovi</th>
+        <th>Izdavac</th>
+        <th>Jezik</th>
+        <th>Na stanju</th>
+        <th>Slika</th>
+        <th>Azuriraj</th>
+        <th>Obrisi</th>
+    </tr>
+    <tr *ngFor="let n of sveKnjige">
+        <td>{{n.naziv}}</td>
+        <td>{{n.autori}}</td>
+        <td>{{n.zanrovi}}</td>
+        <td>{{n.izdavac}}</td>
+        <td>{{n.jezik}}</td>
+        <td>{{n.naStanju}}</td>
+        <td>
+            <img [src]="n.imagePath" height="70">
+        </td>
+        <td>
+            <button (click)="azurirajKnj(n)">Azuriraj</button>
+        </td>
+        <td>
+            <button (click)="izbrisiKnj(n)">Izbrisi</button>
+        </td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+
+<div *ngIf="azKor">
+<div>
+    Korisnicko ime:
+    <input type="text"  [(ngModel)]="korisnickoIme" >
+</div>
+<div>
+    Lozinka:
+    <input type="text" [(ngModel)]="lozinka" >
+</div>
+<div>
+    Ime i prezime:
+    <input type="text" [(ngModel)]="imeIPrezime">
+</div>
+<div>
+    Adresa:
+    <input type="text" [(ngModel)]="adresa">
+</div>
+<div>
+    Kontakt telefon:
+    <input type="number" [(ngModel)]="kontaktTelefon">
+</div>
+<div>
+    Imejl:
+    <input type="text" [(ngModel)]="imejl">
+</div>
+<div>
+    Tip:
+    <input type="text" [(ngModel)]="tip">
+</div>
+<div>
+    Slika:
+    <img [src]="imagePath" height="100px" >
+</div>
+<button (click)="azurirajK()">Azuriraj</button>
+</div>
+
+
+<div *ngIf="azKnj">
+    <div>
+        Naziv knjige:
+        <input type="text"  [(ngModel)]="naziv" >
+    </div>
+    <div>
+        Autori:
+        <input type="text" [(ngModel)]="autori" >
+    </div>
+    <div>
+        Zanrovi:
+        <select [(ngModel)]="zanrovi" multiple>
+            <option value="horor">horor</option>
+            <option value="drama">drama</option>
+            <option value="ljubavni roman">ljubavni roman</option>
+            <option value="novela">novela</option>
+            <option value="biografija">biografija</option>
+        </select>
+    </div>
+    <div>
+        Izdavac:
+        <input type="text" [(ngModel)]="izdavac">
+    </div>
+    <div>
+        Jezik:
+        <input type="text" [(ngModel)]="jezik">
+    </div>
+    <div>
+        Na stanju:
+        <input type="number" [(ngModel)]="naStanju">
+    </div>
+    <div>
+        Rok:
+        <input type="number" [(ngModel)]="rok">
+    </div>
+    <div>
+        Slika:
+        <img [src]="imagePathKnjiga" height="100px" >
+    </div>
+    <button (click)="azurirajKnjig()">Azuriraj</button>
+    </div>

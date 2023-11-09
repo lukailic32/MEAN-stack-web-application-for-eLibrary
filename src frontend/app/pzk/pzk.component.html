@@ -1,0 +1,67 @@
+<table *ngIf="knjige && knjige.length > 0">
+    <tr>
+        <th>Zatrazio dodavanje</th>
+        <th>Id</th>
+        <th>Naziv</th>
+        <th>Autori</th>
+        <th>Zanrovi</th>
+        <th>Izdavac</th>
+        <th>Datum izdanja</th>
+        <th>Jezik</th>
+        <th>Prihvati</th>
+        <th>Odbaci</th>
+    </tr>
+    <tr *ngFor="let n of knjige">
+        <td>{{n.zahtevao}}</td>
+        <td>{{n.id}}</td>
+        <td>{{n.naziv}}</td>
+        <td>{{n.autori}}</td>
+        <td>{{n.zanrovi}}</td>
+        <td>{{n.izdavac}}</td>
+        <td >{{n.godina}}</td>
+        <td>{{n.jezik}}</td>
+        <td>
+            <button (click)="prihvati(n.id)">prihvati</button>
+        </td>
+        <td>
+            <button (click)="odbaci(n.id)">odbaci</button>
+        </td>
+    </tr>
+</table>
+<p *ngIf="!knjige || knjige.length==0" style="font-weight: bold;">Nema neobradjenih zahteva za knjige</p>
+
+<br/>
+<br/>
+<br/>
+<table *ngIf="korisnici && korisnici.length > 0">
+    <tr>
+        <th>Ime i prezime</th>
+        <th>Korisnicko ime</th>
+        <th>Lozinka</th>
+        <th>Adresa</th>
+        <th>Kontakt telefon</th>
+        <th>Imejl</th>
+        <th>Slika</th>
+        <th>Prihvati</th>
+        <th>Odbaci</th>
+    </tr>
+    <tr *ngFor="let n of korisnici">
+        <td>{{n.imeIPrezime}}</td>
+        <td>{{n.korisnickoIme}}</td>
+        <td>{{n.lozinka}}</td>
+        <td>{{n.adresa}}</td>
+        <td>{{n.kontaktTelefon}}</td>
+        <td>{{n.imejl}}</td>
+        <td>
+            <img [src]="n.imagePath" height="70">
+        </td>
+        <td>
+            <button (click)="prihvatiKorisnika(n.korisnickoIme)">prihvati</button>
+        </td>
+        <td>
+            <button (click)="odbaciKorisnika(n.korisnickoIme)">odbaci</button>
+        </td>
+    </tr>
+</table>
+
+<p *ngIf="!korisnici || korisnici.length==0" style="font-weight: bold;">Nema neobradjenih zahteva za korisnike</p>

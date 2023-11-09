@@ -1,0 +1,20 @@
+<h2>Pregled zaduzenih knjiga</h2>
+
+<div *ngIf="korisnik && korisnik.zaduzeneKnjige.length != 0">
+<div *ngFor="let n of korisnik.zaduzeneKnjige">
+    <div class="card" style="width: 18rem;">
+        <img [src]="n.imagePath" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{n.naziv}}</h5>
+            <p class="card-text">{{n.autori}}</p>
+            <p>broj dana</p>
+            <button class="btn btn-primary" (click)="detalji(n.id)">Detalji</button>
+            <button class="btn btn-primary" (click)="vrati(n.id, n.datumZaduzivanja)">Vrati knjigu</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf="korisnik && korisnik.zaduzeneKnjige.length == 0">
+    <p style="font-size: 30px;"> Korisnik nema na zaduzenju nijednu knjigu</p>
+</div>
